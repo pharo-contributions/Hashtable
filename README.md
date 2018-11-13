@@ -27,3 +27,9 @@ To add Hashtable to your baseline just add this:
 ```
 
 Note that you can replace the #v1.x.x by a branch as #master or #development or a tag as #v1.0.0, #v1.? or #v1.2.x.
+
+## Official repositories
+
+The official version is stored at: https://github.com/moosetechnology/Moose 
+
+The old repository comes from: http://smalltalkhub.com/#!/~Moose/HashTable
