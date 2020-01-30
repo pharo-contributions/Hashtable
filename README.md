@@ -1,5 +1,6 @@
 # Hashtable
-Temporary fork of Moose's Hashtable
+
+Hashtable is a project containing collections faster for big collections.
 
 ## Description
 
@@ -12,9 +13,8 @@ To install Hashtable on your Pharo image you can just execute the following scri
 
 ```Smalltalk
     Metacello new
-    	githubUser: 'jecisc' project: 'Hashtable' commitish: 'v1.x.x' path: 'src';
+    	githubUser: 'pharo-contributions' project: 'Hashtable' commitish: 'v1.x.x' path: 'src';
     	baseline: 'Hashtable';
-    	onWarningLog;
     	load
 ```
 
@@ -23,13 +23,29 @@ To add Hashtable to your baseline just add this:
 ```Smalltalk
     spec
     	baseline: 'Hashtable'
-    	with: [ spec repository: 'github://jecisc/Hashtable:v1.x.x/src' ]
+    	with: [ spec repository: 'github://pharo-contributions/Hashtable:v1.x.x/src' ]
 ```
 
 Note that you can replace the #v1.x.x by a branch as #master or #development or a tag as #v1.0.0, #v1.? or #v1.2.x.
 
-## Official repositories
+## Version management 
 
-The official version is stored at: https://github.com/moosetechnology/Moose 
+This project use semantic versioning to define the releases. This means that each stable release of the project will be assigned a version number of the form `vX.Y.Z`. 
 
-The old repository comes from: http://smalltalkhub.com/#!/~Moose/HashTable
+- **X** defines the major version number
+- **Y** defines the minor version number 
+- **Z** defines the patch version number
+
+When a release contains only bug fixes, the patch number increases. When the release contains new features that are backward compatible, the minor version increases. When the release contains breaking changes, the major version increases. 
+
+Thus, it should be safe to depend on a fixed major version and moving minor version of this project.
+
+## Smalltalk versions compatibility
+
+| Version 	| Compatible Pharo versions 	|
+|-------------	|---------------------------	|
+| 1.x.x       	| Pharo 61, 70, 80		|
+
+## Contact
+
+If you have any questions or problems do not hesitate to open an issue
