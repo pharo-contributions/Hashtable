@@ -16,7 +16,7 @@ BaselineOfHashtable >> baseline: spec [
 			package: 'Hashtable';
 			package: 'Hashtable-Tests' with: [ spec requires: #( 'Hashtable' ) ].
 
-		spec for: #( #'pharo3.x' #'pharo4.x' #'pharo5.x' #'pharo6.x' #'pharo7.x' ) do: [ 
+		spec for: #( #'pharo3.x' #'pharo4.x' #'pharo5.x' #'pharo6.x' #'pharo7.x' #'pharo8.x') do: [ 
 			spec
 				package: 'HashtableToPharo8' with: [ spec requires: #( 'Hashtable' ) ];
 				package: 'Hashtable'.
