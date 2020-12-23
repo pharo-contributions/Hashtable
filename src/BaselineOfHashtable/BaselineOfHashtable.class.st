@@ -20,7 +20,8 @@ BaselineOfHashtable >> baseline: spec [
 			spec
 				package: 'HashtableToPharo8' with: [ spec requires: #( 'Hashtable' ) ];
 				package: 'Hashtable'.
-			spec group: #default with: #( 'HashtableToPharo8' ) ] ].
+			spec
+				group: 'Core' with: #( 'HashtableToPharo8' 'Hashtable' ) ] ].
 
 	"Groups"
 	spec
