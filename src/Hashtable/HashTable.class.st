@@ -332,7 +332,7 @@ HashTable >> keysSortedSafely [
 	sortedKeys sortBlock:
 		[:x :y |  "Should really be use <obj, string, num> compareSafely..."
 			[ x < y ]
-				ifError: [x printString < y printString] ].
+				onErrorDo: [x printString < y printString] ].
 	self keysDo: [ :each | sortedKeys add: each].
 	^ sortedKeys
 ]
