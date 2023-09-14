@@ -9,7 +9,8 @@ Class {
 
 { #category : #testing }
 ObjectTester class >> testAll [
-	"self testAll"
+
+	<script>
 	self new testAll
 ]
 
@@ -40,15 +41,19 @@ ObjectTester >> test: aClass on: aStream [
 
 { #category : #testing }
 ObjectTester >> testAll [
+
 	| stream |
-	stream := FileStream fileNamed: 'classes.creationdata' .
+	stream := ZnCharacterWriteStream on:
+		          (File named: 'classes-creationdata') writeStream.
 	self testClasses
-		do: [ :each | 
-			Transcript show: 'Testing: '; show: each name; cr.
-			self test: each on: stream]
-		separatedBy: [ stream cr].
+		do: [ :each |
+			self
+				trace: 'Testing: ';
+				traceCr: each name.
+			self test: each on: stream ]
+		separatedBy: [ stream cr ].
 	stream close.
-	Transcript show: 'done' ; cr
+	self traceCr: 'done'
 ]
 
 { #category : #accessing }
