@@ -5,7 +5,7 @@ Class {
 		'table',
 		'testsize'
 	],
-	#category : #'Hashtable-Tests'
+	#category : #'Hashtable-Tests-Base'
 }
 
 { #category : #running }
@@ -18,28 +18,29 @@ WeakKeyHashTableTest >> setUp [
 { #category : #tests }
 WeakKeyHashTableTest >> testAddAll [
 	"(self run: #testAddAll)"
-	
-	|  table2 |
-	table at: #a put:1.
-	table at: #b put: 2. 
-	
+
+	| table2 |
+	table at: #a put: 1.
+	table at: #b put: 2.
+
 	table2 := table species new.
 	table2 at: #a put: 3.
 	table2 at: #c put: 4.
-	
+
 	table addAll: table2.
-	self assert: (table at: #a) = 3.
-	self assert: (table at: #b) = 2.
-	self assert: (table at: #c) = 4.
+	self assert: (table at: #a) equals: 3.
+	self assert: (table at: #b) equals: 2.
+	self assert: (table at: #c) equals: 4
 ]
 
 { #category : #tests }
 WeakKeyHashTableTest >> testAddAssoc [
+
 	0 to: testsize do: [ :each |
-		self assert: table size = each.
+		self assert: table size equals: each.
 		table add: each -> each asString ].
 	0 to: testsize do: [ :each |
-		self assert: (table at: each) = each asString ].
+	self assert: (table at: each) equals: each asString ]
 ]
 
 { #category : #tests }
@@ -55,90 +56,93 @@ WeakKeyHashTableTest >> testAddCopy [
 
 { #category : #tests }
 WeakKeyHashTableTest >> testAddInteger [
+
 	0 to: testsize do: [ :each |
-		self assert: table size = each.
+		self assert: table size equals: each.
 		table at: each put: each asString ].
 	0 to: testsize do: [ :each |
-		self assert: (table at: each) = each asString ].
+	self assert: (table at: each) equals: each asString ]
 ]
 
 { #category : #tests }
 WeakKeyHashTableTest >> testAddNil [
+
 	self deny: (table includesKey: nil).
 	self should: [ table at: nil put: 'nil' ] raise: Error.
-	self deny: (table includesKey: nil) = 'nil'.
+	self deny: (table includesKey: nil) equals: 'nil'
 ]
 
 { #category : #tests }
 WeakKeyHashTableTest >> testAddString [
+
 	| keys |
 	keys := (0 to: testsize) collect: [ :each | each asString ].
 	keys do: [ :each |
-		self assert: table size = each asNumber.
+		self assert: table size equals: each asNumber.
 		table at: each put: each asNumber ].
 	keys := (0 to: testsize) collect: [ :each | each asString ].
 	keys do: [ :each |
-		self assert: (table at: each ) = each asNumber ].
+		self assert: (table at: each) equals: each asNumber ]
 ]
 
 { #category : #tests }
 WeakKeyHashTableTest >> testComma [
 	"(self run: #testComma)"
-	
+
 	| table1 table2 |
-	table at: #a put:1.
-	table at: #b put: 2. 
-	
+	table at: #a put: 1.
+	table at: #b put: 2.
+
 	table1 := table species new.
 	table1 at: #a put: 3.
 	table1 at: #c put: 4.
-	
-	table2 := table, table1.
-	self assert: (table2 at: #a) = 3.
-	self assert: (table2 at: #b) = 2.
-	self assert: (table2 at: #c) = 4.
+
+	table2 := table , table1.
+	self assert: (table2 at: #a) equals: 3.
+	self assert: (table2 at: #b) equals: 2.
+	self assert: (table2 at: #c) equals: 4
 ]
 
 { #category : #tests }
 WeakKeyHashTableTest >> testEqualsDictionary [
+
 	| dictionary |
 	dictionary := Dictionary new.
 	0 to: testsize do: [ :each |
 		dictionary at: each put: each asString.
 		table at: each put: each asString ].
-	
-	self assert: table = dictionary
+	self assert: table equals: dictionary
 ]
 
 { #category : #tests }
 WeakKeyHashTableTest >> testEqualsTransitive [
+
 	| table2 |
 	table2 := table species new.
 	0 to: testsize do: [ :each |
 		table2 at: each put: each asString.
 		table at: each put: each asString ].
-	
-	self assert: table = table2.
-	self assert: table2 = table
+	self assert: table equals: table2.
+	self assert: table2 equals: table
 ]
 
 { #category : #tests }
 WeakKeyHashTableTest >> testKeys [
+
 	| keys |
 	keys := (1 to: 100) asOrderedCollection.
-	keys do: [ :each |
-		table at: each put: each asString ].
-	self assert: table keys asArray sort = (1 to: 100) asArray
+	keys do: [ :each | table at: each put: each asString ].
+	self assert: table keys asArray sort equals: (1 to: 100) asArray
 ]
 
 { #category : #tests }
 WeakKeyHashTableTest >> testKeysAndValuesDo [
+
 	| keys |
 	keys := (1 to: 100) asOrderedCollection.
-	keys do: [ :each |
-		table at: each put: each ].
+	keys do: [ :each | table at: each put: each ].
 	table keysAndValuesDo: [ :key :value |
-		self assert: key = value.
+		self assert: key equals: value.
 		self assert: (keys includes: key).
 		keys remove: key ifAbsent: [ self fail ] ].
 	self assert: keys isEmpty
@@ -146,6 +150,7 @@ WeakKeyHashTableTest >> testKeysAndValuesDo [
 
 { #category : #tests }
 WeakKeyHashTableTest >> testKeysDo [
+
 	| keys |
 	keys := (1 to: 100) asOrderedCollection.
 	keys do: [ :each |
@@ -158,68 +163,74 @@ WeakKeyHashTableTest >> testKeysDo [
 
 { #category : #tests }
 WeakKeyHashTableTest >> testRemoveInteger [
+
 	0 to: testsize do: [ :each |
-		self assert: table size = each.
+		self assert: table size equals: each.
 		table at: each put: each asString ].
-	
+
 	0 to: testsize by: 2 do: [ :each |
 		self assert: (table includesKey: each).
 		table removeKey: each.
 		self deny: (table includesKey: each) ].
-	
+
 	1 to: testsize by: 2 do: [ :each |
-		self assert: (table at: each) = each asString ].
+	self assert: (table at: each) equals: each asString ]
 ]
 
 { #category : #tests }
 WeakKeyHashTableTest >> testRemoveString [
+
 	| keys |
 	keys := (0 to: testsize) collect: [ :each | each asString ].
 	keys do: [ :each |
-		self assert: table size = each asNumber.
+		self assert: table size equals: each asNumber.
 		table at: each put: each asNumber ].
-	
+
 	0 to: testsize by: 2 do: [ :each |
 		self assert: (table includesKey: (keys at: each + 1)).
 		table removeKey: each asString.
 		self deny: (table includesKey: each asString) ].
-	
+
 	1 to: testsize by: 2 do: [ :each |
-		self assert: (table at: each asString) = each ].
+	self assert: (table at: each asString) equals: each ]
 ]
 
 { #category : #tests }
 WeakKeyHashTableTest >> testSize [
+
 	| keys |
 	keys := (1 to: testsize) collect: [ :each | each asString ].
-	self assert: table size = 0.
-	
-	keys do: [ :each |		
+	self assert: table size equals: 0.
+
+	keys do: [ :each |
 		table at: each put: each asNumber.
-		self assert: table size = each asNumber. ].
-	
+		self assert: table size equals: each asNumber ].
+
 	1 to: testsize do: [ :each |
-		self assert: table size = testsize.
-		self assert: (table at: each asString ) = each ].
-	
+		self assert: table size equals: testsize.
+		self assert: (table at: each asString) equals: each ].
+
 	testsize to: 1 by: -1 do: [ :each |
-		self assert: table size = each. 
+		self assert: table size equals: each.
 		table removeKey: each asString ].
-	
-	self assert: table size = 0.
+	self assert: table size equals: 0
 ]
 
 { #category : #tests }
 WeakKeyHashTableTest >> testValues [
+
 	| keys |
-	keys := (1 to: 100) asOrderedCollection collect: [ :each | each asString ].
-	keys do: [ :each |
-		table at: each put: each ].
-	self assert: ((table values collect: [ :each | each asNumber ]) asArray sort = (1 to: 100) asArray)
+	keys := (1 to: 100) asOrderedCollection collect: [ :each |
+		        each asString ].
+	keys do: [ :each | table at: each put: each ].
+	self
+		assert: (table values collect: [ :each | each asNumber ]) asArray sort
+		equals: (1 to: 100) asArray
 ]
 
 { #category : #tests }
 WeakKeyHashTableTest >> testValuesDo [
+
 	| keys |
 	keys := (1 to: 100) asOrderedCollection.
 	keys do: [ :each |
@@ -232,22 +243,24 @@ WeakKeyHashTableTest >> testValuesDo [
 
 { #category : #tests }
 WeakKeyHashTableTest >> testWeakInstance [
+
 	| createBlock string |
-	createBlock := [(String new: 3)
-		at: 1 put: $n;
-		at: 2 put: $e;
-		at: 3 put: $w;
-		yourself ].
+	createBlock := [
+	               (String new: 3)
+		               at: 1 put: $n;
+		               at: 2 put: $e;
+		               at: 3 put: $w;
+		               yourself ].
 	string := createBlock value.
-	
+
 	table at: string put: true.
 	self assert: (table at: string).
 	self assert: (table at: createBlock value).
-	self assert: table size = 1.
+	self assert: table size equals: 1.
 	string := nil.
 	Smalltalk garbageCollect.
-	
+
 	string := createBlock value.
 	self deny: (table includesKey: string).
-	self assert: table isEmpty.
+	self assert: table isEmpty
 ]
