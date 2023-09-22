@@ -10,7 +10,7 @@ WeakHashSetTest >> setUp [
 	set := WeakHashSet new
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakHashSetTest >> testWeakInstance [
 	| createBlock string |
 	createBlock := [(String new: 3)

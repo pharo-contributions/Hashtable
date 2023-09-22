@@ -15,7 +15,7 @@ HashTableTest >> setUp [
 	testsize := 100.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testAddAll [
 	"(self run: #testAddAll)"
 	
@@ -33,7 +33,7 @@ HashTableTest >> testAddAll [
 	self assert: (table at: #c) = 4.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testAddAssoc [
 	0 to: testsize do: [ :each |
 		self assert: table size = each.
@@ -42,7 +42,7 @@ HashTableTest >> testAddAssoc [
 		self assert: (table at: each) = each asString ].
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testAddCopy [
 	| table2 |
 	0 to: testsize do: [ :each |
@@ -53,7 +53,7 @@ HashTableTest >> testAddCopy [
 	self deny: (table includesKey: testsize + 1).
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testAddInteger [
 	0 to: testsize do: [ :each |
 		self assert: table size = each.
@@ -62,7 +62,7 @@ HashTableTest >> testAddInteger [
 		self assert: (table at: each) = each asString ].
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testAddNil [
 	self deny: (table includesKey: nil).
 	table at: nil put: 'nil'.
@@ -77,7 +77,7 @@ HashTableTest >> testAddNil [
 	self deny: (table includesKey: nil).
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testAddString [
 	0 to: testsize do: [ :each |
 		self assert: table size = each.
@@ -86,7 +86,7 @@ HashTableTest >> testAddString [
 		self assert: (table at: each asString ) = each ].
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testAssociactionssDo [
 	| keys |
 	keys := (1 to: 100) asOrderedCollection.
@@ -99,7 +99,7 @@ HashTableTest >> testAssociactionssDo [
 	self assert: keys isEmpty
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testComma [
 	"(self run: #testComma)"
 	
@@ -117,7 +117,7 @@ HashTableTest >> testComma [
 	self assert: (table2 at: #c) = 4.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testEqualsDictionary [
 	| dictionary |
 	dictionary := Dictionary new.
@@ -128,7 +128,7 @@ HashTableTest >> testEqualsDictionary [
 	self assert: table = dictionary
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testEqualsTransitive [
 	| table2 |
 	table2 := table species new.
@@ -140,7 +140,7 @@ HashTableTest >> testEqualsTransitive [
 	self assert: table2 = table
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testKeys [
 	| keys |
 	keys := (1 to: 100) asOrderedCollection.
@@ -149,7 +149,7 @@ HashTableTest >> testKeys [
 	self assert: table keys asArray sort = (1 to: 100) asArray
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testKeysAndValuesDo [
 	| keys |
 	keys := (1 to: 100) asOrderedCollection.
@@ -162,7 +162,7 @@ HashTableTest >> testKeysAndValuesDo [
 	self assert: keys isEmpty
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testKeysDo [
 	| keys |
 	keys := (1 to: 100) asOrderedCollection.
@@ -174,7 +174,7 @@ HashTableTest >> testKeysDo [
 	self assert: keys isEmpty
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testRemoveFromCopy [
 	| original copy |
 	original := HashTable new.
@@ -185,7 +185,7 @@ HashTableTest >> testRemoveFromCopy [
 	self assert: (original at: $b) = $b
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testRemoveInteger [
 	0 to: testsize do: [ :each |
 		self assert: table size = each.
@@ -200,7 +200,7 @@ HashTableTest >> testRemoveInteger [
 		self assert: (table at: each) = each asString ].
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testRemoveString [
 	0 to: testsize do: [ :each |
 		self assert: table size = each.
@@ -215,7 +215,7 @@ HashTableTest >> testRemoveString [
 		self assert: (table at: each asString) = each ].
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testSize [
 	self assert: table size = 0.
 	
@@ -234,7 +234,7 @@ HashTableTest >> testSize [
 	self assert: table size = 0.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testValues [
 	| keys |
 	keys := (1 to: 100) asOrderedCollection.
@@ -243,7 +243,7 @@ HashTableTest >> testValues [
 	self assert: table values asArray sort = (1 to: 100) asArray
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashTableTest >> testValuesDo [
 	| keys |
 	keys := (1 to: 100) asOrderedCollection.

@@ -13,7 +13,7 @@ HashBagTest >> setUp [
 	bag := HashBag new.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashBagTest >> testAdd [
 	bag add: 1.
 	bag add: 1.
@@ -21,14 +21,14 @@ HashBagTest >> testAdd [
 	self assert: ((bag occurrencesOf: 1) = 2)
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashBagTest >> testAddWithOccurrances [
 	bag add: 1 withOccurrences: 2.
 	
 	self assert: ((bag occurrencesOf: 1) = 2)
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashBagTest >> testCopy [
 	| copy |
 	bag add: 1.
@@ -43,7 +43,7 @@ HashBagTest >> testCopy [
 	self assert: ((copy occurrencesOf: 1) = 0).
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashBagTest >> testRemove [
 	bag add: 1 withOccurrences: 2.
 	bag remove: 1.

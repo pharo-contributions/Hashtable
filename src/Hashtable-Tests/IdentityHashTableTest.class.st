@@ -15,7 +15,7 @@ IdentityHashTableTest >> setUp [
 	testsize := 100.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 IdentityHashTableTest >> testAddAndModifyString [
 	| key value |
 	key := String newFrom: 'testme!'.
@@ -30,7 +30,7 @@ IdentityHashTableTest >> testAddAndModifyString [
 	
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 IdentityHashTableTest >> testAddEqualStrings [
 	| key1 key2 value1 value2 |
 	key1 := String newFrom: 'testme!'.
@@ -50,7 +50,7 @@ IdentityHashTableTest >> testAddEqualStrings [
 	
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 IdentityHashTableTest >> testAddSymbol [
 	0 to: testsize do: [ :each |
 		self assert: table size = each.
@@ -59,7 +59,7 @@ IdentityHashTableTest >> testAddSymbol [
 		self assert: (table at: each asString asSymbol ) = each ].
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 IdentityHashTableTest >> testRemoveSymbol [
 	0 to: testsize do: [ :each |
 		self assert: table size = each.

@@ -13,7 +13,7 @@ IdentityHashSetTest >> setUp [
 	set := IdentityHashSet new
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 IdentityHashSetTest >> testSameHash [
 
 	| string1 string2 |

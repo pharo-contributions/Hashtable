@@ -25,7 +25,7 @@ HashSetTest >> setUp [
 	set := HashSet new
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashSetTest >> testAdd [
 	| set2 |
 	0 to: 10 do: [ :each |
@@ -38,12 +38,12 @@ HashSetTest >> testAdd [
 		self assert: (set2 includes: each) ].
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashSetTest >> testAddNil [
 	self should: [ set add: nil ] raise: Error
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashSetTest >> testCopy [
 	| newSet |
 	0 to: 10 do: [ :each |
@@ -55,7 +55,7 @@ HashSetTest >> testCopy [
 	self assert: (newSet = (set copyWith: 11))
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashSetTest >> testDo [
 	0 to: 10 do: [ :each |
 		set add: each ].
@@ -63,7 +63,7 @@ HashSetTest >> testDo [
 		self assert: ((0 to: 10) includes: each)].
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashSetTest >> testEqualsSet [
 	| set2 |
 	set2 := Set new.
@@ -74,7 +74,7 @@ HashSetTest >> testEqualsSet [
 	self assert: set = set2
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashSetTest >> testEqualsSetTransitive [
 	| set2 |
 	set2 := set species new.
@@ -86,7 +86,7 @@ HashSetTest >> testEqualsSetTransitive [
 	self assert: set2 = set
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashSetTest >> testRemove [
 	0 to: 10 do: [ :each |
 		set add: each ].
@@ -96,7 +96,7 @@ HashSetTest >> testRemove [
 		self deny: (set includes: each) ]
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashSetTest >> testSameHash [
 
 	| string1 string2 |
@@ -130,7 +130,7 @@ HashSetTest >> testSameHash [
 	self should: [ set remove: string2 ] raise: Error.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashSetTest >> testSelect [
 	| result |
 	0 to: 10 do: [ :each |
@@ -141,7 +141,7 @@ HashSetTest >> testSelect [
 	self assert: result = (0 to: 10 by: 2) asSet.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 HashSetTest >> testSize [
 	self assert: set size = 0.
 	1 to: 10 do: [ :each |		

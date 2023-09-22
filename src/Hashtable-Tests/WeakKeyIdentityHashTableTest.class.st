@@ -15,7 +15,7 @@ WeakKeyIdentityHashTableTest >> setUp [
 	testsize := 100.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testAddAll [
 	"(self run: #testAddAll)"
 	
@@ -33,7 +33,7 @@ WeakKeyIdentityHashTableTest >> testAddAll [
 	self assert: (table at: #c) = 4.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testAddAndModifyString [
 	| key value |
 	key := String newFrom: 'testme!'.
@@ -47,7 +47,7 @@ WeakKeyIdentityHashTableTest >> testAddAndModifyString [
 	self assert: (table at: key) = value
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testAddAssoc [
 	0 to: testsize do: [ :each |
 		self assert: table size = each.
@@ -56,7 +56,7 @@ WeakKeyIdentityHashTableTest >> testAddAssoc [
 		self assert: (table at: each) = each asString ].
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testAddCopy [
 	| table2 |
 	0 to: testsize do: [ :each |
@@ -67,7 +67,7 @@ WeakKeyIdentityHashTableTest >> testAddCopy [
 	self deny: (table includesKey: testsize + 1).
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testAddEqualStrings [
 	| key1 key2 value1 value2 |
 	key1 := String newFrom: 'testme!'.
@@ -85,7 +85,7 @@ WeakKeyIdentityHashTableTest >> testAddEqualStrings [
 	self assert: (table at: key2) = value2.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testAddEqualStrings2 [
 	| firstKeys secondsKeys |
 	firstKeys := (1 to: testsize) collect: [ :each | each asString].
@@ -104,7 +104,7 @@ WeakKeyIdentityHashTableTest >> testAddEqualStrings2 [
 		self assert: (table at: each) = each asNumber negated ].
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testAddInteger [
 	0 to: testsize do: [ :each |
 		self assert: table size = each.
@@ -113,7 +113,7 @@ WeakKeyIdentityHashTableTest >> testAddInteger [
 		self assert: (table at: each) = each asString ].
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testAddString [
 	| keys |
 	keys := (0 to: testsize) collect: [ :each | each asString ].
@@ -124,7 +124,7 @@ WeakKeyIdentityHashTableTest >> testAddString [
 		self assert: (table at: each ) = each asNumber ].
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testAddSymbol [
 	| keys |
 	keys := (0 to: testsize) collect: [ :each | each asString asSymbol ].
@@ -135,7 +135,7 @@ WeakKeyIdentityHashTableTest >> testAddSymbol [
 		self assert: (table at: each) = each asNumber ].
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testComma [
 	"(self run: #testComma)"
 	
@@ -153,7 +153,7 @@ WeakKeyIdentityHashTableTest >> testComma [
 	self assert: (table2 at: #c) = 4.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testEqualsDictionary [
 	| dictionary |
 	dictionary := Dictionary new.
@@ -164,7 +164,7 @@ WeakKeyIdentityHashTableTest >> testEqualsDictionary [
 	self assert: table = dictionary
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testEqualsTransitive [
 	| table2 |
 	table2 := table species new.
@@ -176,7 +176,7 @@ WeakKeyIdentityHashTableTest >> testEqualsTransitive [
 	self assert: table2 = table
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testKeys [
 	| keys |
 	keys := (1 to: 100) asOrderedCollection collect: [ :each | each asString ].
@@ -186,7 +186,7 @@ WeakKeyIdentityHashTableTest >> testKeys [
 
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testKeysAndValuesDo [
 	| keys |
 	keys := (1 to: 100) asOrderedCollection collect: [ :each | each asString ].
@@ -199,7 +199,7 @@ WeakKeyIdentityHashTableTest >> testKeysAndValuesDo [
 	self assert: keys isEmpty
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testKeysDo [
 	| keys |
 	keys := (1 to: 100) asOrderedCollection collect: [ :each | each asString ].
@@ -211,7 +211,7 @@ WeakKeyIdentityHashTableTest >> testKeysDo [
 	self assert: keys isEmpty
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testRemoveString [
 	| key keys |
 	keys := (0 to: testsize) collect: [ :each | each asString ].
@@ -230,7 +230,7 @@ WeakKeyIdentityHashTableTest >> testRemoveString [
 		self assert: (table at: key) = each asNumber ].
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testRemoveSymbol [
 	| key keys |
 	keys := (0 to: testsize) collect: [ :each | each asString asSymbol ].	
@@ -249,7 +249,7 @@ WeakKeyIdentityHashTableTest >> testRemoveSymbol [
 		self assert: (table at: key) = each asNumber ].
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testValues [
 	| keys |
 	keys := (1 to: 100) asOrderedCollection collect: [ :each | each asString ].
@@ -258,7 +258,7 @@ WeakKeyIdentityHashTableTest >> testValues [
 	self assert: ((table values collect: [ :each | each asNumber ]) asArray sort = (10 to: 1000 by: 10) asArray)
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testValuesDo [
 	| keys |
 	keys := (1 to: 100) asOrderedCollection.
@@ -270,7 +270,7 @@ WeakKeyIdentityHashTableTest >> testValuesDo [
 	self assert: keys isEmpty
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 WeakKeyIdentityHashTableTest >> testWeakInstance [
 	| createBlock string1 string2 |
 	createBlock := [(String new: 3)

@@ -13,7 +13,7 @@ IdentityHashBagTest >> setUp [
 	bag := IdentityHashBag new.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 IdentityHashBagTest >> testAdd [
 	| first second |
 	first := String newFrom: 'key'.
@@ -30,7 +30,7 @@ IdentityHashBagTest >> testAdd [
 	self assert: ((bag occurrencesOf: second) = 3)
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 IdentityHashBagTest >> testAddWithOccurrances [
 	| first second |
 	first := String newFrom: 'key'.
@@ -42,7 +42,7 @@ IdentityHashBagTest >> testAddWithOccurrances [
 	self assert: ((bag occurrencesOf: first) = 2)
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 IdentityHashBagTest >> testRemove [
 	| first second |
 	first := String newFrom: 'key'.
