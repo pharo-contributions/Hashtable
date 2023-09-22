@@ -4,7 +4,7 @@ Baseline of the Hashtable project
 Class {
 	#name : #BaselineOfHashtable,
 	#superclass : #BaselineOf,
-	#category : #BaselineOfHashtable
+	#category : #'BaselineOfHashtable-Base'
 }
 
 { #category : #baseline }
@@ -27,9 +27,4 @@ BaselineOfHashtable >> baseline: spec [
 	spec
 	group: 'Core' with: #( 'Hashtable' );
 	group: 'Tests' with: #( 'Hashtable-Tests' ) 
-]
-
-{ #category : #accessing }
-BaselineOfHashtable >> projectClass [
-	^ MetacelloCypressBaselineProject
 ]
