@@ -6,7 +6,7 @@ This results in a much better performance for big Collections.
 Class {
 	#name : #IdentityHashSet,
 	#superclass : #HashSet,
-	#category : #Hashtable
+	#category : #'Hashtable-Base'
 }
 
 { #category : #private }

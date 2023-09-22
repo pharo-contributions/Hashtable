@@ -1,36 +1,43 @@
+"
+Testing various objects
+"
 Class {
 	#name : #ObjectTester,
-	#superclass : #Object,
+	#superclass : #HashingSpeedTest,
 	#instVars : [
 		'instances'
 	],
-	#category : #'Hashtable-Objects'
+	#category : #'Hashtable-Performance'
 }
 
 { #category : #testing }
 ObjectTester class >> testAll [
-	"self testAll"
+	<script>
 	self new testAll
 ]
 
-{ #category : #'initialize-release' }
+{ #category : #initialization }
 ObjectTester >> initialize [
+
 	super initialize.
 	self instances: 1000000
 ]
 
 { #category : #accessing }
 ObjectTester >> instances [
-	^instances
+
+	^ instances
 ]
 
 { #category : #accessing }
-ObjectTester >> instances: anInteger [ 
+ObjectTester >> instances: anInteger [
+
 	instances := anInteger
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 ObjectTester >> test: aClass on: aStream [
+
 	aStream nextPutAll: aClass name.
 	aStream tab.
 	aStream nextPutAll: [
@@ -38,21 +45,24 @@ ObjectTester >> test: aClass on: aStream [
 			aClass new ] ] timeToRun asString
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 ObjectTester >> testAll [
+	<script: 'self testAll'>
+	
 	| stream |
-	stream := FileStream fileNamed: 'classes.creationdata' .
+	stream := self fileStreamForFileNamed: 'classes-creationdata'.
 	self testClasses
 		do: [ :each | 
 			Transcript show: 'Testing: '; show: each name; cr.
 			self test: each on: stream]
 		separatedBy: [ stream cr].
 	stream close.
-	Transcript show: 'done' ; cr
+	self traceCr: 'done'
 ]
 
 { #category : #accessing }
 ObjectTester >> testClasses [
+
 	^Array
 		with: Object
 		with: CVAutoincrementObject

@@ -12,7 +12,7 @@ Class {
 		'size',
 		'capacity'
 	],
-	#category : #Hashtable
+	#category : #'Hashtable-Base'
 }
 
 { #category : #'as yet unclassified' }
