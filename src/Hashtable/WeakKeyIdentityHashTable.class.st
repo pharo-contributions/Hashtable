@@ -11,6 +11,7 @@ Class {
 
 { #category : #private }
 WeakKeyIdentityHashTable >> hashFor: anObject [
+
 	^ anObject identityHash
 ]
 

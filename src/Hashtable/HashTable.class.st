@@ -365,83 +365,88 @@ HashTable >> printElementsOn: aStream [
 
 { #category : #private }
 HashTable >> removeItemWithKey: aKey from: anItem ifAbsent: aBlock [
-	| nextItem value |	
+
+	| nextItem value |
 	nextItem := anItem next.
-	^nextItem isNil
-		ifTrue: [ aBlock value ]
-		ifFalse: [ 
-			(self is: nextItem key sameAs: aKey)
-				ifTrue: [
-					anItem next: nextItem next.
-					value := nextItem value.
-					self decrementSize.
-					nextItem setAsNil.
-					value ]
-				ifFalse: [
-					self removeItemWithKey: aKey from: nextItem ifAbsent: aBlock ] ].
-	
+	^ nextItem
+			ifNil: [ aBlock value ]
+			ifNotNil: [ (self is: nextItem key sameAs: aKey)
+			  					ifTrue: [
+								  	anItem next: nextItem next.
+				  				  	value := nextItem value.
+				  				   self decrementSize.
+				  				 	nextItem setAsNil.
+				  				 	value ]
+			  					ifFalse: [
+			  						self removeItemWithKey: aKey from: nextItem ifAbsent: aBlock ] ]
 ]
 
 { #category : #removing }
 HashTable >> removeKey: aKey [
-	^self removeKey: aKey ifAbsent: [ self errorKeyNotFound ]
+
+	^ self removeKey: aKey ifAbsent: [ self errorKeyNotFound ]
 ]
 
 { #category : #removing }
 HashTable >> removeKey: aKey ifAbsent: aBlock [
+
 	| index item value |
 	index := self computeIndex: aKey.
-	item := self table at: index.	 
-	^item isNil
-		ifTrue: [ aBlock value ]
-		ifFalse: [ 
-			(self is: item key sameAs: aKey)
-				ifTrue: [
-					self table at: index put: item next.
-					value := item value.
-					item setAsNil.
-					self decrementSize.
-					value ]
-				ifFalse: [
-					self removeItemWithKey: aKey from: item ifAbsent: aBlock ] ].
+	item := self table at: index.
+	^ item
+			ifNil: [ aBlock value ]
+			ifNotNil: [ (self is: item key sameAs: aKey)
+			  					ifTrue: [
+				  					self table at: index put: item next.
+				  					value := item value.
+				  					item setAsNil.
+				  					self decrementSize.
+				  					value ]
+			  					ifFalse: [
+			  						self removeItemWithKey: aKey from: item ifAbsent: aBlock ] ]
 ]
 
 { #category : #enumerating }
-HashTable >> select: aBlock [ 
+HashTable >> select: aBlock [
 	"Evaluate aBlock with each of my values as the argument. Collect into a
 	new dictionary, only those associations for which aBlock evaluates to
 	true."
 
 	| newCollection |
 	newCollection := self species new.
-	self keysAndValuesDo: [ :key :value | 
+	self keysAndValuesDo: [ :key :value |
 		(aBlock value: value)
 			ifTrue: [ newCollection at: key put: value ] ].
 	^newCollection
 ]
 
 { #category : #private }
-HashTable >> setLoadfactor: aFloat [ 
+HashTable >> setLoadfactor: aFloat [
+
 	loadfactor := aFloat
 ]
 
 { #category : #accessing }
 HashTable >> size [
-	^size
+
+	^ size
 ]
 
 { #category : #private }
 HashTable >> size: anInteger [
+
 	size := anInteger
 ]
 
 { #category : #private }
 HashTable >> table [
-	^table
+
+	^ table
 ]
 
 { #category : #private }
 HashTable >> table: anObject [
+
 	table := anObject
 ]
 
@@ -456,12 +461,13 @@ HashTable >> values [
 
 { #category : #enumerating }
 HashTable >> valuesDo: aBlock [
-	self keysAndValuesDo: [ :key :value |
-		aBlock value: value ]
+
+	self keysAndValuesDo: [ :key :value | aBlock value: value ]
 ]
 
 { #category : #private }
 HashTable >> withTable: anArray [
 	"private -- for use only in copy"
+
 	table := anArray
 ]

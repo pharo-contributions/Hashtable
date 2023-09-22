@@ -11,5 +11,6 @@ Class {
 
 { #category : #'instance creation' }
 IdentityHashBag class >> contentsClass [
-	^IdentityHashTable
+
+	^ IdentityHashTable
 ]

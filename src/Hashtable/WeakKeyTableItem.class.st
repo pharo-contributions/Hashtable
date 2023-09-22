@@ -1,3 +1,6 @@
+"
+Table item within a hash table with a weak key
+"
 Class {
 	#name : #WeakKeyTableItem,
 	#superclass : #TableItem,
@@ -6,11 +9,13 @@ Class {
 
 { #category : #accessing }
 WeakKeyTableItem >> key [
-	^key first
+
+	^ key first
 ]
 
 { #category : #accessing }
 WeakKeyTableItem >> key: anObject [
+
 	key := WeakArray with: anObject.
-	keyHash := anObject hash.
+	keyHash := anObject hash
 ]

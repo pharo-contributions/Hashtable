@@ -11,10 +11,12 @@ Class {
 
 { #category : #private }
 IdentityHashSet >> hashFor: anObject [
+
 	^ anObject identityHash
 ]
 
 { #category : #private }
 IdentityHashSet >> is: anObject sameAs: anotherObject [
+
 	^ anObject == anotherObject
 ]
