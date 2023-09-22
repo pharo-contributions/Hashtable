@@ -6,53 +6,57 @@ This results in a much better performance for big Collections.
 Class {
 	#name : #WeakKeyHashTable,
 	#superclass : #HashTable,
-	#category : #Hashtable
+	#category : #'Hashtable-Base'
 }
 
 { #category : #adding }
 WeakKeyHashTable >> at: aKey put: aValue [
+
 	aKey ifNil: [self error: 'WeakKeyHashTables cannot meaningfully contain nil as an element'].
-	^super at: aKey put: aValue
+	^ super at: aKey put: aValue
 ]
 
 { #category : #private }
 WeakKeyHashTable >> fixAt: anInteger [
-	"remove all items at an index in the table who's key is garbage collected"
+	"Remove all items at an index in the table who's key is garbage collected"
+
 	| item lastItem |
 	item := self table at: anInteger.
-	
+
 	[ item notNil and: [item key isNil ] ]
 		whileTrue: [
 			item := item next.
 			self table at: anInteger put: item.
 			self decrementSize ].
-		
+
 	item := self table at: anInteger.
 	lastItem := item.
 	[ item notNil ]
-		whileTrue: [ 
+		whileTrue: [
 			lastItem := item.
-			item := item next.			
-						
+			item := item next.
+
 			[ item notNil and: [ item key isNil ] ]
 				whileTrue: [
 					item := item next.
 					lastItem next: item.
-					self decrementSize ] ].
+					self decrementSize ] ]
 ]
 
 { #category : #private }
 WeakKeyHashTable >> itemClass [
-	^WeakKeyTableItem
+
+	^ WeakKeyTableItem
 ]
 
 { #category : #private }
 WeakKeyHashTable >> itemFor: aKey atIndex: anInteger [
+
 	| item |
-	
+
 	self fixAt: anInteger.
-	item := self table at: anInteger.	
-		
+	item := self table at: anInteger.
+
 	[ item notNil ]
 		whileTrue: [
 			(self is: item key sameAs: aKey)
@@ -63,6 +67,7 @@ WeakKeyHashTable >> itemFor: aKey atIndex: anInteger [
 
 { #category : #enumerating }
 WeakKeyHashTable >> keysAndValuesDo: aBlock [
+
 	self table withIndexDo: [ :each :index |
 		| current |
 		self fixAt: index.

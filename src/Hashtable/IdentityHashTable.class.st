@@ -6,15 +6,17 @@ This results in a much better performance for big Collections.
 Class {
 	#name : #IdentityHashTable,
 	#superclass : #HashTable,
-	#category : #Hashtable
+	#category : #'Hashtable-Base'
 }
 
 { #category : #private }
 IdentityHashTable >> hashFor: anObject [
+
 	^ anObject identityHash
 ]
 
 { #category : #private }
 IdentityHashTable >> is: anObject sameAs: anotherObject [
+
 	^ anObject == anotherObject
 ]

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'bag'
 	],
-	#category : #'Hashtable-Tests'
+	#category : #'Hashtable-Tests-Base'
 }
 
 { #category : #running }
@@ -13,51 +13,51 @@ IdentityHashBagTest >> setUp [
 	bag := IdentityHashBag new.
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 IdentityHashBagTest >> testAdd [
+
 	| first second |
 	first := String newFrom: 'key'.
 	second := String newFrom: 'key'.
-	
+
 	bag add: first.
 	bag add: first.
-	
+
 	bag add: second.
 	bag add: second.
-	bag add: second.	
-	
-	self assert: ((bag occurrencesOf: first) = 2).
-	self assert: ((bag occurrencesOf: second) = 3)
+	bag add: second.
+	self assert: (bag occurrencesOf: first) equals: 2.
+	self assert: (bag occurrencesOf: second) equals: 3
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 IdentityHashBagTest >> testAddWithOccurrances [
+
 	| first second |
 	first := String newFrom: 'key'.
 	second := String newFrom: 'key'.
 
 	bag add: first withOccurrences: 2.
 	bag add: second withOccurrences: 3.
-	
-	self assert: ((bag occurrencesOf: first) = 2)
+	self assert: (bag occurrencesOf: first) equals: 2
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 IdentityHashBagTest >> testRemove [
+
 	| first second |
 	first := String newFrom: 'key'.
 	second := String newFrom: 'key'.
-	
+
 	bag add: first withOccurrences: 2.
 	bag add: second withOccurrences: 3.
 	bag remove: first.
-	
-	self assert: ((bag occurrencesOf: first) = 1).
-	
+	self assert: (bag occurrencesOf: first) equals: 1.
+
 	bag remove: first.
-	self assert: ((bag occurrencesOf: first) = 0).
-	
+	self assert: (bag occurrencesOf: first) equals: 0.
+
 	self should: [ bag remove: first ] raise: Error.
-	self assert: ((bag occurrencesOf: first) = 0).
-	self assert: ((bag occurrencesOf: second) = 3).
+	self assert: (bag occurrencesOf: first) equals: 0.
+	self assert: (bag occurrencesOf: second) equals: 3
 ]

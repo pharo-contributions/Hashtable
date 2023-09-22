@@ -6,7 +6,7 @@ This results in a much better performance for big Collections.
 Class {
 	#name : #HashBag,
 	#superclass : #Bag,
-	#category : #Hashtable
+	#category : #'Hashtable-Base'
 }
 
 { #category : #'instance creation' }

@@ -1,18 +1,22 @@
+"
+An object with a random hash
+"
 Class {
 	#name : #RandomObject,
 	#superclass : #Object,
 	#instVars : [
 		'hash'
 	],
-	#category : #'Hashtable-Objects'
+	#category : #'Hashtable-Performance-Objects'
 }
 
 { #category : #comparing }
 RandomObject >> hash [
-	^hash
+
+	^ hash
 ]
 
-{ #category : #'initialize-release' }
+{ #category : #initialization }
 RandomObject >> initialize [
 	super initialize.
 	hash := SmallInteger maxVal atRandom

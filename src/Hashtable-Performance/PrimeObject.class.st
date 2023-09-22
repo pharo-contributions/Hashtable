@@ -1,10 +1,11 @@
 Class {
 	#name : #PrimeObject,
 	#superclass : #Object,
-	#category : #'Hashtable-Objects'
+	#category : #'Hashtable-Performance-Objects'
 }
 
 { #category : #comparing }
 PrimeObject >> hash [
-	^self identityHash * 100799
+
+	^ self identityHash * 100799
 ]

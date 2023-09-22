@@ -6,10 +6,11 @@ This results in a much better performance for big Collections.
 Class {
 	#name : #IdentityHashBag,
 	#superclass : #Bag,
-	#category : #Hashtable
+	#category : #'Hashtable-Base'
 }
 
 { #category : #'instance creation' }
 IdentityHashBag class >> contentsClass [
-	^IdentityHashTable
+
+	^ IdentityHashTable
 ]

@@ -1,11 +1,14 @@
+"
+Testing dictionary performance
+"
 Class {
 	#name : #DictionarySpeedTest,
-	#superclass : #Object,
+	#superclass : #HashingSpeedTest,
 	#instVars : [
 		'stepsize',
 		'testsize'
 	],
-	#category : #'Hashtable-Tests'
+	#category : #'Hashtable-Performance-Tests'
 }
 
 { #category : #finding }
@@ -101,12 +104,12 @@ DictionarySpeedTest class >> testSizes: oldSet [
 	self inform: ' old size: ' , oldSize asString , ' new size: ' , newSize asString , ' '.
 ]
 
-{ #category : #utility }
+{ #category : #utilities }
 DictionarySpeedTest >> asSelector: aClass [
 	^ ( 'test' , aClass name, '0n:' ) asSymbol
 ]
 
-{ #category : #'initialize-release' }
+{ #category : #initialization }
 DictionarySpeedTest >> initialize [
 	super initialize.
 	self stepsize: 100.
@@ -115,26 +118,30 @@ DictionarySpeedTest >> initialize [
 
 { #category : #accessing }
 DictionarySpeedTest >> stepsize [
-	^stepsize
+
+	^ stepsize
 ]
 
 { #category : #accessing }
 DictionarySpeedTest >> stepsize: anObject [
+
 	stepsize := anObject
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 DictionarySpeedTest >> testClasses [
+	<script: 'self new testClasses'>
+	
 	| stream |
 	self testDictionaryClasses do: [ :each |
 		Transcript show: 'Testing: ' , each name asString ; cr.
-		stream := FileStream fileNamed: each name , '.classdata' .
+		stream := self fileStreamForFileNamed: '.classdata'.
 		self perform: #testDictionary:of:on:  withArguments: (Array with: each with: Object with: stream).
 		stream close ].
 	Transcript show: 'done' ; cr.
 ]
 
-{ #category : #testing }
+{ #category : #private }
 DictionarySpeedTest >> testDictionary: aDictionaryClass of: anObjectClass on: aStream [ 
 	| test ord |
 	test := aDictionaryClass new.
@@ -155,29 +162,32 @@ DictionarySpeedTest >> testDictionary: aDictionaryClass of: anObjectClass on: aS
 
 { #category : #accessing }
 DictionarySpeedTest >> testDictionaryClasses [
-	^Array
-		with: Dictionary
-		with: IdentityDictionary
-		with: HashTable
-		with: IdentityHashTable
+
+	^ Array
+		  with: Dictionary
+		  with: IdentityDictionary
+		  with: HashTable
+		  with: IdentityHashTable
 ]
 
 { #category : #accessing }
 DictionarySpeedTest >> testObjectClasses [
-	^Array
-		with: Object
-		with: PrimeObject
-		"with: CVAutoincrementObject
-		with: CIVAutoincrementObject
-		with: RandomObject"
+
+	^ Array
+			with: Object
+			with: PrimeObject
+		  "with: CVAutoincrementObject
+			with: CIVAutoincrementObject
+			with: RandomObject"
 ]
 
-{ #category : #testing }
+{ #category : #tests }
 DictionarySpeedTest >> testObjects [
+	<script: 'self new testObjects'>
 	| stream |
 	self testObjectClasses do: [ :each |
 		Transcript show: 'Testing: ' , each name asString ; cr.
-		stream := FileStream fileNamed: each name , '.objectdata' .
+		stream := self fileStreamForFileNamed: '.objectdata'.
 		self perform: #testDictionary:of:on:  withArguments: (Array with: Dictionary with: each with: stream).
 		stream close ].
 	Transcript show: 'done' ; cr.
@@ -185,10 +195,12 @@ DictionarySpeedTest >> testObjects [
 
 { #category : #accessing }
 DictionarySpeedTest >> testsize [
-	^testsize
+
+	^ testsize
 ]
 
 { #category : #accessing }
 DictionarySpeedTest >> testsize: anObject [
+
 	testsize := anObject
 ]

@@ -6,11 +6,12 @@ This results in a much better performance for big Collections.
 Class {
 	#name : #WeakKeyIdentityHashTable,
 	#superclass : #WeakKeyHashTable,
-	#category : #Hashtable
+	#category : #'Hashtable-Base'
 }
 
 { #category : #private }
 WeakKeyIdentityHashTable >> hashFor: anObject [
+
 	^ anObject identityHash
 ]
 
