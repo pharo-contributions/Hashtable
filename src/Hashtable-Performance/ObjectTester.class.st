@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'instances'
 	],
-	#category : #'Hashtable-Performance'
+	#category : #'Hashtable-Performance-Tests'
 }
 
 { #category : #testing }

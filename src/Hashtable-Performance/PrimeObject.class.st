@@ -1,7 +1,7 @@
 Class {
 	#name : #PrimeObject,
 	#superclass : #Object,
-	#category : #'Hashtable-Performance'
+	#category : #'Hashtable-Performance-Objects'
 }
 
 { #category : #comparing }

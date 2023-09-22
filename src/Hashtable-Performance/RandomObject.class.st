@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'hash'
 	],
-	#category : #'Hashtable-Performance'
+	#category : #'Hashtable-Performance-Objects'
 }
 
 { #category : #comparing }

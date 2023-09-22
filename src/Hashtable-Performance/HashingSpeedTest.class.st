@@ -4,7 +4,7 @@ Abstract superclass for speed tests
 Class {
 	#name : #HashingSpeedTest,
 	#superclass : #Object,
-	#category : #'Hashtable-Performance'
+	#category : #'Hashtable-Performance-Tests'
 }
 
 { #category : #testing }

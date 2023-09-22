@@ -8,7 +8,7 @@ Class {
 		'stepsize',
 		'testsize'
 	],
-	#category : #'Hashtable-Performance'
+	#category : #'Hashtable-Performance-Tests'
 }
 
 { #category : #finding }
