@@ -7,7 +7,7 @@ Class {
 	#category : #'BaselineOfHashtable-Base'
 }
 
-{ #category : #baseline }
+{ #category : #baselines }
 BaselineOfHashtable >> baseline: spec [
 
 	<baseline>
