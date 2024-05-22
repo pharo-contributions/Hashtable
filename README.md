@@ -1,3 +1,7 @@
+***********************************************************************************
+# WARNING: THIS PROJECT IS MOVED TO https://github.com/pharo-containers/Hashtable
+***********************************************************************************
+
 # Hashtable
 
 **Hashtable** is a project for [Pharo](https://www.pharo.org) containing collections faster for big collections.
@@ -11,6 +15,9 @@
 [![Pharo 10](https://img.shields.io/badge/Pharo-10-%23aac9ff.svg)](https://pharo.org/download)
 [![Pharo 11](https://img.shields.io/badge/Pharo-11-%23aac9ff.svg)](https://pharo.org/download)
 
+***********************************************************************************
+# WARNING: THIS PROJECT IS MOVED TO https://github.com/pharo-containers/Hashtable
+***********************************************************************************
 ## Description
 
 This is a replacement for (Identity)Dictionary and (Identity/Weak)Set that uses chaining instead of linear probing for collision resolution.
